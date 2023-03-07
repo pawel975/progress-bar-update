@@ -1,0 +1,58 @@
+.progress-bar {
+    
+    @include after-mobile {
+        background: var(--breadcrumbs-background);
+        height: fit-content;
+        padding-top: 2rem;
+        padding-bottom: 4rem;
+        display: flex;
+        align-items: center;
+    }
+
+    &__step-wrapper {
+    }
+
+    &__step-number {
+        margin: 1rem;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 3rem;
+        aspect-ratio: 1;
+        border-radius: 100%;
+        color: $white;
+        font-weight: bold;
+        background-color: $default-primary-base-color;
+    }
+
+    &__step-name {
+        margin-top: 0.5rem;
+        transform: translate(-50%);
+        left: 50%;
+        position: absolute;
+        width: 200px;
+        align-self: center;
+        text-align: center;
+        font-weight: bold;
+        background-color: transparent !important;
+    }
+
+    &__step-bar {
+        border: 0.2rem solid $default-primary-base-color;
+        height: 0.3rem;
+        width: 100%;
+        border-radius: 0.5em;
+    }
+
+    .middle-step {
+        width: 90rem;
+    }
+
+    .non-active {
+        color: $black;
+        border-color: $default-secondary-dark-color;
+        background-color: $default-secondary-dark-color;
+        opacity: 0.5;
+    }
+}
