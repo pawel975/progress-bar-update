@@ -24,8 +24,6 @@ export class Checkout extends SourceCheckout {
 
     render() {
 
-        console.log(this.stepMap, this.progressBarStepNames, this.props.checkoutStep)
-
         return (
 
             <main block="Checkout">
