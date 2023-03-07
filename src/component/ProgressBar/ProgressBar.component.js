@@ -16,9 +16,13 @@ class ProgressBar extends PureComponent {
 
         const checkoutMark = <svg xmlns="http://www.w3.org/2000/svg" fill="white" width="18" height="18" viewBox="0 0 24 24"><path d="M20.285 2l-11.285 11.567-5.286-5.011-3.714 3.716 9 8.728 15-15.285z"/></svg>;
 
+        const progressBarProgress = <div className="progress-bar__progress-overlay"></div>;
+
         return (
             <div className="progress-bar">
-                <hr className={`progress-bar__step-bar`}></hr>
+                <div className="progress-bar__step-bar active">
+                    {progressBarProgress}
+                </div>
                 {
 
                     this.props.progressBarLabels.map((stepName, index) => {
@@ -30,17 +34,21 @@ class ProgressBar extends PureComponent {
                         return (
                             <>
                                 {index > 0 ? 
-                                    <hr className={`progress-bar__step-bar middle-step ${!isStepActive && "non-active"}`}></hr> : null
+                                    <div className={`progress-bar__step-bar middle-step ${isStepActive && "active"}`}>
+                                        {isStepActive && progressBarProgress}
+                                    </div> : null
                                 }
                                 <div className="progress-bar__step-wrapper">
-                                    <div className={`progress-bar__step-number ${!isStepActive && "non-active"}`}>{isPreviousStep ? checkoutMark : stepId}</div>
-                                    <span className={`progress-bar__step-name ${!isStepActive && "non-active"}`}>{stepName}</span>
+                                    <div className={`progress-bar__step-number ${isStepActive && "active"}`}>{isPreviousStep ? checkoutMark : stepId}</div>
+                                    <span className={`progress-bar__step-name ${isStepActive && "active"}`}>{stepName}</span>
                                 </div> 
                             </>
                         )
                     })
                 }
-                <hr className={`progress-bar__step-bar ${!isChekoutFinished && "non-active"}`}></hr>
+                <div className={`progress-bar__step-bar ${isChekoutFinished && "active"}`}>
+                    {isChekoutFinished && progressBarProgress}
+                </div>
             </div>
         )
     }

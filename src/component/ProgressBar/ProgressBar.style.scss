@@ -21,9 +21,10 @@
         width: 3rem;
         aspect-ratio: 1;
         border-radius: 100%;
-        color: $white;
+        color: $black;
+        opacity: 0.5;
         font-weight: bold;
-        background-color: $default-primary-base-color;
+        background-color: $default-secondary-dark-color;
     }
 
     &__step-name {
@@ -35,24 +36,60 @@
         align-self: center;
         text-align: center;
         font-weight: bold;
+        opacity: 0.5;
         background-color: transparent !important;
     }
 
     &__step-bar {
+        border: 0.2rem solid $default-secondary-dark-color;
+        height: 0.3rem;
+        width: 100%;
+        border-radius: 0.5rem;
+        position: relative;
+        opacity: 0.5;
+        transition: 1s
+    };
+
+    &__step-bar.active {
+        border: 0.2rem solid $default-secondary-dark-color;
+        height: 0.3rem;
+        width: 100%;
+        border-radius: 0.5rem;
+        position: relative;
+        opacity: 0.5;
+    };
+
+    .active {
+        color: $white;
+        background-color: $default-primary-base-color;
+        opacity: 1;
+    }
+
+    &__step-name.active {
+        color: $black;
+    }
+
+    &__progress-overlay {
+        z-index: 1000;
+        position: relative;
+        overflow-y: visible;
+        left: 0;
+        bottom: 0;
         border: 0.2rem solid $default-primary-base-color;
         height: 0.3rem;
         width: 100%;
-        border-radius: 0.5em;
+        border-radius: 0.5rem;
+        transform: translate(0,-50%);
+        animation: progress 1s ease;
+    }
+
+    @keyframes progress {
+        0%{width: 0%;}
+        100%{width: 100%;}
     }
 
     .middle-step {
         width: 90rem;
     }
 
-    .non-active {
-        color: $black;
-        border-color: $default-secondary-dark-color;
-        background-color: $default-secondary-dark-color;
-        opacity: 0.5;
-    }
 }
