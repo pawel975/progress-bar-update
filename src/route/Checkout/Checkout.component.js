@@ -5,20 +5,6 @@ import './Checkout.extension.style.scss';
 
 /** @namespace ProgressBar/Route/Checkout/Component */
 export class Checkout extends SourceCheckout {
-
-    //TODO: Hardcoded steps for sake of styling and creating structure
-    steps = [
-        {
-            id: 1,
-            name: "Shipping",
-            active: true,
-        },
-        {
-            id: 2,
-            name: "Review & Payments",
-            active: false,
-        }
-    ]
     
     progressBarLabels = ["Shipping", "Review & Payments"]
 
