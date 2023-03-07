@@ -5,30 +5,37 @@ class ProgressBar extends PureComponent {
     
     constructor(props){
         super(props)
-
-        const {steps} = this.props;
-
-        this.stepsNumbers = this.props.steps.map((step, index) => {
-            
-            return (
-                <>
-                    {index !== 0 ? <hr className={`progress-bar__step-bar middle-step ${!step.active && "non-active"}`}></hr> : null}
-                    <div className="progress-bar__step-wrapper">
-                        <div className={`progress-bar__step-number ${!step.active && "non-active"}`}>{step.id}</div>
-                        <span className={`progress-bar__step-name ${!step.active && "non-active"}`}>{step.name}</span>
-                    </div> 
-                </>
-            )
-        })
     }
 
-
     render(){
+
+        const activeStepIndex = (Object.keys(this.props.stepMap)).indexOf(this.props.activeStepName);
+        const isChekoutFinished = activeStepIndex === this.props.progressBarStepNames.length;
+
         return (
             <div className="progress-bar">
-                <hr className="progress-bar__step-bar"></hr>
-                {this.stepsNumbers}
-                <hr className="progress-bar__step-bar non-active"></hr>
+                <hr className={`progress-bar__step-bar`}></hr>
+                {
+
+                    this.props.progressBarStepNames.map((stepName, index) => {
+
+                        const stepId = index + 1;
+                        const isStepActive = activeStepIndex >= index;
+            
+                        return (
+                            <>
+                                {index > 0 ? 
+                                    <hr className={`progress-bar__step-bar middle-step ${!isStepActive && "non-active"}`}></hr> : null
+                                }
+                                <div className="progress-bar__step-wrapper">
+                                    <div className={`progress-bar__step-number ${!isStepActive && "non-active"}`}>{stepId}</div>
+                                    <span className={`progress-bar__step-name ${!isStepActive && "non-active"}`}>{stepName}</span>
+                                </div> 
+                            </>
+                        )
+                    })
+                }
+                <hr className={`progress-bar__step-bar ${!isChekoutFinished && "non-active"}`}></hr>
             </div>
         )
     }

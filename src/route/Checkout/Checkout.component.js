@@ -16,14 +16,24 @@ export class Checkout extends SourceCheckout {
         {
             id: 2,
             name: "Review & Payments",
-            active: true,
+            active: false,
         }
     ]
+    
+    progressBarStepNames = ["Shipping", "Review & Payments"]
 
     render() {
+
+        console.log(this.stepMap, this.progressBarStepNames, this.props.checkoutStep)
+
         return (
+
             <main block="Checkout">
-                <ProgressBar steps={this.steps}/>
+                <ProgressBar 
+                    stepMap={this.stepMap} 
+                    progressBarStepNames={this.progressBarStepNames}
+                    activeStepName={this.props.checkoutStep}
+                />
                 <ContentWrapper
                   wrapperMix={ { block: 'Checkout', elem: 'Wrapper' } }
                   label={ __('Checkout page') }
