@@ -20,7 +20,7 @@ export class Checkout extends SourceCheckout {
         }
     ]
     
-    progressBarStepNames = ["Shipping", "Review & Payments"]
+    progressBarLabels = ["Shipping", "Review & Payments"]
 
     render() {
 
@@ -31,7 +31,7 @@ export class Checkout extends SourceCheckout {
             <main block="Checkout">
                 <ProgressBar 
                     stepMap={this.stepMap} 
-                    progressBarStepNames={this.progressBarStepNames}
+                    progressBarLabels={this.progressBarLabels}
                     activeStepName={this.props.checkoutStep}
                 />
                 <ContentWrapper
